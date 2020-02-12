@@ -1,0 +1,95 @@
+@mixin size($width: 100%, $height: 100%) {
+  width: $width;
+  height: $height;
+  @content
+}
+
+
+@mixin square($size: 100%) {
+  @include size($size, $size);
+}
+
+@mixin pos-absolute($x: left, $v-val: 0, $y: top, $y-val: 0) {
+  position: absolute;
+  #{$x}: $v-val;
+  #{$y}: $y-val;
+}
+
+@mixin translate($x, $y, $extraProp: "") {
+  @if $extraProp == "" {
+    transform: translate(#{$x}, #{$y});
+    -webkit-transform: translate(#{$x}, #{$y});
+    -moz-transform: translate(#{$x}, #{$y});
+    -ms-transform: translate(#{$x}, #{$y});
+    -o-transform: translate(#{$x}, #{$y});
+  } @else {
+    transform: translate(#{$x}, #{$y}) $extraProp;
+    -webkit-transform: translate(#{$x}, #{$y}) $extraProp;
+    -moz-transform: translate(#{$x}, #{$y}) $extraProp;
+    -ms-transform: translate(#{$x}, #{$y}) $extraProp;
+    -o-transform: translate(#{$x}, #{$y}) $extraProp;
+  }
+}
+
+
+#progress-indicator,
+.progress-indicator {
+  position: relative;
+  display: block;
+  
+  @include square(94px);
+
+  position: relative;
+  margin-right: 22px;
+
+  #svg,
+  .svg {
+    position: absolute;
+    @include pos-absolute(left, 50%, top, 50%);
+    @include translate(-50%, -50%, rotate(-90deg) scale(0.45));
+    overflow: visible;
+
+    circle {
+      stroke-dashoffset: 0;
+      transition: stroke-dashoffset 1s linear;
+      stroke: grey;
+
+      $stroke-width: 30px;
+
+      stroke-width: $stroke-width;
+      &#progress-bar,
+      &.progress-bar {
+        stroke-width: $stroke-width;
+      }
+    }
+
+    #progress-bar,
+    .progress-bar {
+      stroke: lightblue;
+    }
+  }
+
+  &::after {
+    content: attr(data-pct) "%";
+    @include size(100%, auto);
+    @include pos-absolute(left, 50%, top, 50%);
+    @include translate(-50%, -50%);
+    
+    font-size: 24px;
+    color: black;
+    font-weight: bold;
+  }
+
+  &.small {
+    @include square(62px);
+
+    #svg,
+    .svg {
+      @include translate(-50%, -50%, rotate(-90deg) scale(0.3));
+
+      #progress-bar {
+        stroke: black;
+      }
+    }
+  }
+}

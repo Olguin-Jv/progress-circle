@@ -1,0 +1,100 @@
+#progress-indicator,
+.progress-indicator {
+  position: relative;
+  display: block;
+  width: 94px;
+  height: 94px;
+  position: relative;
+  margin-right: 22px;
+}
+
+#progress-indicator #svg,
+#progress-indicator .svg,
+.progress-indicator #svg,
+.progress-indicator .svg {
+  position: absolute;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%) rotate(-90deg) scale(0.45);
+  -webkit-transform: translate(-50%, -50%) rotate(-90deg) scale(0.45);
+  -moz-transform: translate(-50%, -50%) rotate(-90deg) scale(0.45);
+  -ms-transform: translate(-50%, -50%) rotate(-90deg) scale(0.45);
+  -o-transform: translate(-50%, -50%) rotate(-90deg) scale(0.45);
+  overflow: visible;
+}
+
+#progress-indicator #svg circle,
+#progress-indicator .svg circle,
+.progress-indicator #svg circle,
+.progress-indicator .svg circle {
+  stroke-dashoffset: 0;
+  -webkit-transition: stroke-dashoffset 1s linear;
+  transition: stroke-dashoffset 1s linear;
+  stroke: grey;
+  stroke-width: 30px;
+}
+
+#progress-indicator #svg circle#progress-bar, #progress-indicator #svg circle.progress-bar,
+#progress-indicator .svg circle#progress-bar,
+#progress-indicator .svg circle.progress-bar,
+.progress-indicator #svg circle#progress-bar,
+.progress-indicator #svg circle.progress-bar,
+.progress-indicator .svg circle#progress-bar,
+.progress-indicator .svg circle.progress-bar {
+  stroke-width: 30px;
+}
+
+#progress-indicator #svg #progress-bar,
+#progress-indicator #svg .progress-bar,
+#progress-indicator .svg #progress-bar,
+#progress-indicator .svg .progress-bar,
+.progress-indicator #svg #progress-bar,
+.progress-indicator #svg .progress-bar,
+.progress-indicator .svg #progress-bar,
+.progress-indicator .svg .progress-bar {
+  stroke: lightblue;
+}
+
+#progress-indicator::after,
+.progress-indicator::after {
+  content: attr(data-pct) "%";
+  width: 100%;
+  height: auto;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  font-size: 24px;
+  color: black;
+  font-weight: bold;
+}
+
+#progress-indicator.small,
+.progress-indicator.small {
+  width: 62px;
+  height: 62px;
+}
+
+#progress-indicator.small #svg,
+#progress-indicator.small .svg,
+.progress-indicator.small #svg,
+.progress-indicator.small .svg {
+  transform: translate(-50%, -50%) rotate(-90deg) scale(0.3);
+  -webkit-transform: translate(-50%, -50%) rotate(-90deg) scale(0.3);
+  -moz-transform: translate(-50%, -50%) rotate(-90deg) scale(0.3);
+  -ms-transform: translate(-50%, -50%) rotate(-90deg) scale(0.3);
+  -o-transform: translate(-50%, -50%) rotate(-90deg) scale(0.3);
+}
+
+#progress-indicator.small #svg #progress-bar,
+#progress-indicator.small .svg #progress-bar,
+.progress-indicator.small #svg #progress-bar,
+.progress-indicator.small .svg #progress-bar {
+  stroke: black;
+}
+/*# sourceMappingURL=progress-circle.css.map */
